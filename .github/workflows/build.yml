@@ -54,6 +54,8 @@ jobs:
             dist/**/*.AppImage
             dist/**/*.deb
             dist/**/*.tar.gz
+          fail_on_unmatched_files: false
+          generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
