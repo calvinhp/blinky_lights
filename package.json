@@ -1,0 +1,35 @@
+{
+  "name": "blinky-lights",
+  "version": "0.1.0",
+  "description": "An Electron app that recreates nostalgic data-center blinking lights.",
+  "main": "src/main.js",
+  "author": "",
+  "license": "MIT",
+  "productName": "Blinky Lights",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "pack": "electron-builder --dir",
+    "build": "electron-builder --mac"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^29.0.0",
+    "electron-builder": "^24.0.0"
+  },
+  "build": {
+    "icon": "assets/icon.icns",
+    "appId": "com.example.blinkylights",
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.entertainment"
+    }
+  }
+}

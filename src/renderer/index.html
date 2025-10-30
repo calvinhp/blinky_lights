@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self';"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blinky Lights</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="scene">
+      <section class="legend">
+        <h1>Blinky Lights</h1>
+        <p>
+          A meditative wall of racks echoing the hum and glow of classic data centers.
+          Sit back and let the indicators dance.
+        </p>
+        <div class="status">
+          <span class="status-item">
+            <span class="indicator indicator--ok"></span> Activity
+          </span>
+          <span class="status-item">
+            <span class="indicator indicator--warn"></span> Hot Swap
+          </span>
+          <span class="status-item">
+            <span class="indicator indicator--err"></span> Fault
+          </span>
+        </div>
+        <footer>
+          <span id="version"></span>
+        </footer>
+      </section>
+      <section class="rack-wall" id="rack-wall"></section>
+    </main>
+    <script src="renderer.js"></script>
+  </body>
+</html>
