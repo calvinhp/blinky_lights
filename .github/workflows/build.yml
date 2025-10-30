@@ -1,0 +1,51 @@
+# Build Electron packages for macOS, Windows, and Linux
+name: Build Releases
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-latest
+            target: "--mac"
+            artifact-name: blinky-lights-macos
+          - os: ubuntu-latest
+            target: "--linux"
+            artifact-name: blinky-lights-linux
+          - os: windows-latest
+            target: "--win"
+            artifact-name: blinky-lights-windows
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build ${{ matrix.artifact-name }}
+        run: |
+          npx electron-builder ${{ matrix.target }} --publish=never
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact-name }}
+          path: dist/**
+          if-no-files-found: error
