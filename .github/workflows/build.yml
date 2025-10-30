@@ -1,6 +1,10 @@
 # Build Electron packages for macOS, Windows, and Linux
 name: Build Releases
 
+permissions:
+  contents: write
+
+
 on:
   workflow_dispatch:
   push:
