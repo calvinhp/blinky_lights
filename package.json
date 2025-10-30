@@ -1,6 +1,6 @@
 {
   "name": "blinky-lights",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "An Electron app that recreates nostalgic data-center blinking lights.",
   "main": "src/main.js",
   "author": "",
